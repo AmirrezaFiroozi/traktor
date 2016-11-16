@@ -6,6 +6,11 @@ To do this, just run 'traktor.sh' file in a supported shell like bash and watch 
 ## Note
 Do NOT expect anonymity using this method. Polipo is an http proxy and can leak data. If you need anonymity or strong privacy, manually run torbrowser-launcher after installing traktor and use it.
 
+## Install
+    wget https://github.com/archusers/traktor-arch/archive/master.zip -O traktor.zip
+    unzip traktor.zip && cd traktor-arch-master
+    ./traktor-arch.sh
+
 ## Remote install
 type in bash:
 
