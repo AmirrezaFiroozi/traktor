@@ -7,6 +7,11 @@ echo -e "Traktor-Arch v1.0\nTor will be automatically installed and configuredâ€
 sudo pacman -Sy
 sudo pacman -S tor obfsproxy polipo dnscrypt-proxy  
 
+# Make tor log directory 
+sudo mkdir /var/log/tor/
+sudo chown tor:tor /var/log/tor/
+sudo chmod g+w /var/log/tor/
+
 # Update torrc
 sudo wget https://archusers.github.io/traktor/torrc -O /etc/tor/torrc > /dev/null
 
@@ -26,11 +31,11 @@ sudo systemctl start tor 1>/dev/null 2>&1
 sudo systemctl enable tor 1>/dev/null 2>&1
 
 # Wait for tor to establish connection
-echo "Tor is trying to establish a connection. This may take long for some minutes. Please wait" 
+echo "Tor is trying to establish a connection. This may take long for some minutes. Please wait"
 bootstraped='n'
-sudo systemctl restart tor 1>/dev/null 2>&1
-while [ $bootstraped = 'n' ]; do
-	if grep "Bootstrapped 100%: Done" <(systemctl status tor); then
+sudo systemctl restart tor
+while [ $bootstraped == 'n' ]; do
+	if sudo cat /var/log/tor/log | grep "Bootstrapped 100%: Done"; then
 		bootstraped='y'
 	else
 		sleep 1
@@ -57,7 +62,7 @@ echo -e "\nDo you want to install tor-browser too? [y/N]"
 read -n 1 SELECT
 if [ "$SELECT" = "Y" -o "$SELECT" = "y" ]
 then
-yaourt -S tor-browser-en
+yaourt -S tor-browser-en-ir
 fi
 
 # update finished
