@@ -1,6 +1,5 @@
 # traktor
-Traktor will autamically install Tor, polipo, dnscrypt-proxy and Tor Browser Launcher in a Arch Linux based 
-distro like Arch Linux, Manjaro,... and configures them as well.
+Traktor will autamically install Tor, polipo, dnscrypt-proxy and Tor Browser Launcher in either a Debian based distro like Ubuntu or an Arch based distro  and configures them as well.
 
 To do this, just run 'traktor-arch.sh' file in a supported shell like bash and watch for prompts it asks you.
 
@@ -11,7 +10,6 @@ Do NOT expect anonymity using this method. Polipo is an http proxy and can leak 
     wget https://github.com/archusers/traktor-arch/archive/master.zip -O traktor.zip
     unzip traktor.zip && cd traktor-arch-master
     ./traktor-arch.sh
-
 
 ## Remote install
 type in bash:
