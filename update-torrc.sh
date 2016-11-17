@@ -5,7 +5,7 @@ echo "Tor is trying to establish a connection. This may take long for some minut
 bootstraped='n'
 sudo systemctl restart tor
 while [ $bootstraped == 'n' ]; do
-	if sudo cat /var/log/tor/log | grep "Bootstrapped 100%: Done"; then
+	if grep "Bootstrapped 100%: Done" <(systemctl status tor); then
 		bootstraped='y'
 	else
 		sleep 1
