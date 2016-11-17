@@ -11,6 +11,10 @@ If you need anonymity or strong privacy, manually run torbrowser-launcher after 
     unzip traktor.zip && cd traktor-arch-master
     ./traktor-arch.sh
 
+## Update
+If you cannot connect to tor, you need to update your bridges on /etc/tor/torrc manually OR just run update-torrc.sh script like this:
+    ./update-torrc.sh
+
 ## Remote install
 type in bash:
 
