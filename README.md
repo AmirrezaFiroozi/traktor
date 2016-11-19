@@ -15,3 +15,8 @@ Do NOT expect anonymity using this method. Polipo is an http proxy and can leak 
 type in bash:
 
     curl -s https://raw.githubusercontent.com/ubuntu-ir/traktor/master/traktor.sh | sh
+
+## Install from AUR
+    yaourt -S traktor
+#Options :
+traktor_tunnel : torifying the whole network using polipo and gsettings.
