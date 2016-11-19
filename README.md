@@ -18,5 +18,5 @@ type in bash:
 
 ## Install from AUR
     yaourt -S traktor
-#Options :
-traktor_tunnel : torifying the whole network using polipo and gsettings.
+###Options :
+    traktor_tunnel : torifying the whole network using polipo and gsettings.
