@@ -11,7 +11,7 @@ sudo pacman -S	tor obfsproxy polipo dnscrypt-proxy
 #configuring dnscrypt-proxy
 sudo wget https://AmirrezaFiroozi.github.io/traktor/dnscrypt-proxy.service -O /usr/lib/systemd/system/dnscrypt-proxy.service > /dev/null
 sudo systemctl daemon-reload
-sudo echo "nameserver 127.0.0.1" >/etc/resolv.conf
+echo "nameserver 127.0.0.1" | sudo tee /etc/resolv.conf >/dev/null
 sudo chattr +i /etc/resolv.conf
 sudo systemctl enable dnscrypt-proxy.service
 sudo systemctl start dnscrypt-proxy
