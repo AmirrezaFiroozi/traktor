@@ -1,13 +1,13 @@
 #!/bin/bash
 clear
 
-echo -e "Traktor-Arch v1.0\nTor will be automatically installed and configured…\n\n"
+echo -e "Traktor-Arch v1.3\nTor will be automatically installed and configured…\n\n"
 
 # Install Packages
 sudo pacman -Sy
 sudo pacman -S tor obfsproxy polipo dnscrypt-proxy  
 
-<<<<<<< HEAD:traktor_arch.sh
+
 #configuring dnscrypt-proxy
 sudo wget https://AmirrezaFiroozi.github.io/traktor/dnscrypt-proxy.service -O /usr/lib/systemd/system/dnscrypt-proxy.service > /dev/null
 sudo systemctl daemon-reload
@@ -24,13 +24,7 @@ sudo systemctl stop Tor 1>/dev/null 2>&1
 sudo mkdir /var/log/tor/
 sudo chown tor:tor /var/log/tor/
 sudo chmod g+w /var/log/tor/
-# Fix Apparmor problem
-#sudo sed -i '27s/PUx/ix/' /etc/apparmor.d/abstractions/tor
-#sudo apparmor_parser -r -v /etc/apparmor.d/system_tor
-=======
-# Update torrc
-sudo wget https://archusers.github.io/traktor/torrc -O /etc/tor/torrc > /dev/null
->>>>>>> archtraktor/master:traktor-arch.sh
+
 
 # Write Polipo config
 echo 'logSyslog = true
@@ -48,11 +42,11 @@ sudo systemctl start tor 1>/dev/null 2>&1
 sudo systemctl enable tor 1>/dev/null 2>&1
 
 # Wait for tor to establish connection
-echo "Tor is trying to establish a connection. This may take long for some minutes. Please wait"
+echo "Tor is trying to establish a connection. This may take long for some minutes. Please wait" | sudo tee /var/log/tor/log
 bootstraped='n'
 sudo systemctl restart tor
 while [ $bootstraped == 'n' ]; do
-	if grep "Bootstrapped 100%: Done" <(systemctl status tor); then
+	if sudo cat /var/log/tor/log | grep "Bootstrapped 100%: Done"; then
 		bootstraped='y'
 	else
 		sleep 1
