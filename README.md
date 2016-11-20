@@ -10,7 +10,13 @@ If you need anonymity or strong privacy, manually run torbrowser-launcher after 
     wget https://github.com/archusers/traktor-arch/archive/master.zip -O traktor.zip
     unzip traktor.zip && cd traktor-arch-master
     ./traktor-arch.sh
-
+# install from AUR
+    yaourt -S traktor
+## Options for AUR version :
+    traktor_tunnel : torifying the whole network using polipo and gsettings
+    traktor_untunnel : disabling traktor_tunnel
+    traktor_torrc-update : getting  bridges and wait for tor to work
+    traktor_configure : Configuring everything from first 
 ## Update
 If you cannot connect to tor, you need to update your bridges on /etc/tor/torrc manually OR just run update-torrc.sh script like this:
     ./update-torrc.sh
@@ -19,3 +25,4 @@ If you cannot connect to tor, you need to update your bridges on /etc/tor/torrc 
 type in bash:
 
     curl -s https://raw.githubusercontent.com/archusers/traktor-arch/master/traktor-arch.sh | sh
+
